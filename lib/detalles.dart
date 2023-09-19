@@ -40,7 +40,7 @@ Widget backgroundD() {
             children:[
               Container(
                 //margin
-                margin: const EdgeInsets.only(bottom:10),
+                margin: const EdgeInsets.only(bottom:25),
               ),
               Decoration(),
             ],
