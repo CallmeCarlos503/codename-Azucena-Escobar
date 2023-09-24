@@ -9,8 +9,6 @@ class Detalles extends StatelessWidget {
   Widget build(BuildContext context) {
     contexto = context;
     return Scaffold(
-
-
       drawer: drawerP(),
       appBar: AppBar(
         title: const Text('Gasolinera puma'),
