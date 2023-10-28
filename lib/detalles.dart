@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:ffi';
 
+import 'package:flutter/material.dart';
 import 'Principal.dart';
+import 'SQL/db.dart';
+import 'maps.dart';
 BuildContext? contexto;
 class Detalles extends StatelessWidget {
   const Detalles({Key? key}) : super(key: key);
@@ -40,7 +43,7 @@ Widget backgroundD() {
                 //margin
                 margin: const EdgeInsets.only(bottom:25),
               ),
-              Decoration(),
+              Decoration("placeholder",5.55),
             ],
           ),
         ],
@@ -50,7 +53,7 @@ Widget backgroundD() {
   );
 }
 
-Widget Decoration(){
+Widget Decoration(String Nombre, double Precio){
   return Column(
       mainAxisAlignment: MainAxisAlignment.center,
     children:[
@@ -65,8 +68,9 @@ Widget Decoration(){
           child: Column(
             children:[
               Text(
-                "NEJAPA", style:TextStyle(fontSize:25),
+                "$Nombre", style:TextStyle(fontSize:25,color:Colors.black),
               ),
+
               Image.asset(
                 "assets/logo.png",
                 height: 160,
@@ -75,13 +79,13 @@ Widget Decoration(){
               Column(
                 children:[
                   //listview
-                  Text("REGULAR", style:TextStyle(fontSize:20)),
+                  Text("REGULAR", style:TextStyle(fontSize:20,color:Colors.black)),
                   Image.asset(
                     "assets/gas.png",
                     height: 110,
                     width: 110,
                   ),
-                  Text("Precio: 80.00 ", style:TextStyle(fontSize:20),
+                  Text("Precio: $Precio ", style:TextStyle(fontSize:20,color:Colors.black),
                   ),
                   Column(
                     children:[
@@ -89,26 +93,26 @@ Widget Decoration(){
                         //margin
                         margin:EdgeInsets.all(10),
                       ),
-                      Text("SUPER", style:TextStyle(fontSize:20)),
+                      Text("SUPER", style:TextStyle(fontSize:20,color:Colors.black)),
                       Image.asset(
                         "assets/gas.png",
                         height: 110,
                         width: 110,
                       ),
-                      Text("Precio: 80", style:TextStyle(fontSize:20)),
+                      Text("Precio: $Precio", style:TextStyle(fontSize:20,color:Colors.black)),
                       Column(
                           children:[
                             Container(
                               //margin
                               margin:EdgeInsets.all(10),
                             ),
-                            Text("DIESEL", style:TextStyle(fontSize:20)),
+                            Text("DIESEL", style:TextStyle(fontSize:20,color:Colors.black)),
                             Image.asset(
                               "assets/gas.png",
                               height: 110,
                               width: 110,
                             ),
-                            Text("Precio: 80", style:TextStyle(fontSize:20)),
+                            Text("Precio: $Precio", style:TextStyle(fontSize:20,color:Colors.black)),
                             Column(
 
                               children:[
@@ -116,21 +120,7 @@ Widget Decoration(){
                                   //margin
                                   margin:EdgeInsets.only(top:5,bottom:5),
                                 ),
-                              ElevatedButton(
-                                onPressed: (){
-                                  Navigator.push(
-                                    contexto!,
-                                    MaterialPageRoute(builder: (context) => Principal()),
-                                  );
-                                },
-                                child: Text("IR AL MAPA"),
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.black,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                              )
+
                               ],
                             ),
                           ]

@@ -12,7 +12,9 @@ dependencies:
   sqflite:
   path:
   carousel_slider: ^4.2.1
-  url_launcher: ^6.1.14
+  url_launcher: ^6.2.1
+  popover: ^0.2.8+2
+  flutter_map: ^0.13.0
 
 dev_dependencies:
   flutter_launcher_icons: "^0.9.3"

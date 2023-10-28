@@ -29,21 +29,37 @@ class Db {
       "INSERT INTO ESTADOS(ID, NOMBRE) VALUES (2, 'Inactivo');";
   //insert para departamento
   static String insert5 =
-      "INSERT INTO DEPARTAMENTO(NOMBRE,ID_AREA,COORDENADAS) VALUES ('Nejapa', 1,'123,145,123');";
+      "INSERT INTO DEPARTAMENTO(NOMBRE,ID_AREA,COORDENADAS) VALUES ('Nejapa', 1,'13.877756, -89.173645');";
   static String insert6 =
-      "INSERT INTO DEPARTAMENTO(NOMBRE,ID_AREA,COORDENADAS) VALUES ('Apopa', 2,'123,145,123');";
+      "INSERT INTO DEPARTAMENTO(NOMBRE,ID_AREA,COORDENADAS) VALUES ('Apopa', 2,'13.795373, -89.177847');";
   static String insert7 =
-      "INSERT INTO DEPARTAMENTO(NOMBRE,ID_AREA,COORDENADAS) VALUES ('Ahuachapan', 2,'123,145,123');";
+      "INSERT INTO DEPARTAMENTO(NOMBRE,ID_AREA,COORDENADAS) VALUES ('Ahuachapan', 2,'13.806609, -89.170987');";
   static String insert8 =
-      "INSERT INTO DEPARTAMENTO(NOMBRE,ID_AREA,COORDENADAS) VALUES ('San Salvador', 1,'123,145,123');";
+      "INSERT INTO DEPARTAMENTO(NOMBRE,ID_AREA,COORDENADAS) VALUES ('San Salvador', 1,'13.683709, -89.236126');";
   static String insert9 =
-      "INSERT INTO DEPARTAMENTO(NOMBRE,ID_AREA,COORDENADAS) VALUES ('Santa Rosa', 2,'123,145,123');";
+      "INSERT INTO DEPARTAMENTO(NOMBRE,ID_AREA,COORDENADAS) VALUES ('Apaneca', 2,'13.695855911138013, -89.21675618114723');";
+
   static String insert10 =
       "INSERT INTO AREAS(NOMBRE,ID_ESTADOS) VALUES ('Central',1);";
   static String insert11 =
       "INSERT INTO AREAS(NOMBRE,ID_ESTADOS) VALUES ('Oriental',1);";
   static String insert12 =
       "INSERT INTO AREAS(NOMBRE,ID_ESTADOS) VALUES ('Occidental',1);";
+  static String insert13 =
+  "INSERT INTO GASOLINA (NOMBRE, PRECIO, ID_AREA, ID_TIPO_GAS) VALUES ('Regular', 1.2345, 1, 1);";
+  static String insert14 =
+  "INSERT INTO GASOLINA (NOMBRE, PRECIO, ID_AREA, ID_TIPO_GAS) VALUES ('Super', 1.2345, 1, 1);";
+  static String insert15 =
+  "INSERT INTO GASOLINA (NOMBRE, PRECIO, ID_AREA, ID_TIPO_GAS) VALUES ('Diesel', 1.2345, 1, 1);";
+  static String insert16 =
+  "INSERT INTO GASOLINA (NOMBRE, PRECIO, ID_AREA, ID_TIPO_GAS) VALUES ('Regular', 1.2345, 2, 1);";
+  static String insert17 =
+  "INSERT INTO GASOLINA (NOMBRE, PRECIO, ID_AREA, ID_TIPO_GAS) VALUES ('Super', 1.2345, 2, 1);";
+  static String insert18 =
+  "INSERT INTO GASOLINA (NOMBRE, PRECIO, ID_AREA, ID_TIPO_GAS) VALUES ('Diesel', 1.2345, 2, 1);";
+
+  //insertar mas departamentos con ubicaciones de gasolineras pumas existentes en la realidad
+
   static String Nombre = "";
   static String Correo = "";
   static String Telefono = "";
@@ -74,6 +90,12 @@ class Db {
         await db.execute(insert10);
         await db.execute(insert11);
         await db.execute(insert12);
+        await db.execute(insert13);
+        await db.execute(insert14);
+        await db.execute(insert15);
+        await db.execute(insert16);
+          await db.execute(insert17);
+          await db.execute(insert18);
       },
     );
   }
@@ -213,16 +235,15 @@ class Db {
     db.close();
     return data;
   }
+ //mostrar datos de la tabla de gasolina
 
   //Consulta de campos
-  static Future<List<Map<String, dynamic>>> Detalles_departamento(String ID) async {
+  static Future<List<Map<String, dynamic>>> Detalles_departamento(int ID) async {
     Database db = await _openDB();
     String consulta = '''
-    SELECT AREAS.NOMBRE AS "NOMBRE_AREA", DEPARTAMENTO.NOMBRE AS "NOMBRE_DEPARTAMENTO",
-    DEPARTAMENTO.COORDENADAS AS "COORDENADAS" FROM "DEPARTAMENTO","AREAS" WHERE DEPARTAMENTO.ID_AREA= AREAS.ID AND DEPARTAMENTO.ID=$ID;
-  ''';
-    List<Map<String, dynamic>> data = await db.query(consulta);
+SELECT gasolina.NOMBRE,gasolina.ID_AREA FROM gasolina,DEPARTAMENTO WHERE gasolina.ID_AREA=departamento.ID_AREA AND DEPARTAMENTO.ID=$ID;  ''';
+    List<Map<String, dynamic>> dataG = await db.query(consulta);
     db.close();
-    return data;
+    return dataG;
   }
 }
