@@ -92,7 +92,7 @@ Widget cartas(String nombre, String Coordenadas) {
                     showDialog(
                       context: ContextP!,
                       builder: (BuildContext context) {
-                        return  CupertinoAlertDialog(
+                        return  AlertDialog(
                           title: const Text('Ver el mapa'),
                           content: const Text('estas seguro de ver el mapa?'),
                           actions: <Widget>[

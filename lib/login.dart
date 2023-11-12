@@ -70,7 +70,7 @@ Widget Formulario() {
                     Icons.question_mark,
                     color: Colors.white,
                   ),
-                  labelText: 'Correo electronico o dui',
+                  labelText: 'Correo electronico',
                   hintText: 'Carlosgeek503@gmail.com',
                   hintStyle: TextStyle(color: Colors.white),
                   labelStyle: TextStyle(color: Colors.white)),
