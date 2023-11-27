@@ -43,7 +43,7 @@ Widget backgroundD() {
                 //margin
                 margin: const EdgeInsets.only(bottom:25),
               ),
-              Decoration("placeholder",5.55),
+              Decoration("Nejapa",3.86,3.95,4.50),
             ],
           ),
         ],
@@ -53,7 +53,7 @@ Widget backgroundD() {
   );
 }
 
-Widget Decoration(String Nombre, double Precio){
+Widget Decoration(String Nombre, double Precio,double Precio2, double Precio3){
   return Column(
       mainAxisAlignment: MainAxisAlignment.center,
     children:[
@@ -72,9 +72,10 @@ Widget Decoration(String Nombre, double Precio){
               ),
 
               Image.asset(
-                "assets/logo.png",
-                height: 160,
-                width: 160,
+                "assets/gaso.png",
+                height: 100,
+                width: 100,
+
               ),
               Column(
                 children:[
@@ -99,7 +100,7 @@ Widget Decoration(String Nombre, double Precio){
                         height: 110,
                         width: 110,
                       ),
-                      Text("Precio: $Precio", style:TextStyle(fontSize:20,color:Colors.black)),
+                      Text("Precio: $Precio2", style:TextStyle(fontSize:20,color:Colors.black)),
                       Column(
                           children:[
                             Container(
@@ -112,7 +113,7 @@ Widget Decoration(String Nombre, double Precio){
                               height: 110,
                               width: 110,
                             ),
-                            Text("Precio: $Precio", style:TextStyle(fontSize:20,color:Colors.black)),
+                            Text("Precio: $Precio3", style:TextStyle(fontSize:20,color:Colors.black)),
                             Column(
 
                               children:[

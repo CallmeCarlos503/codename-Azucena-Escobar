@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gasolinera_puma/Principal.dart';
@@ -139,8 +141,8 @@ Widget Lista() {
               data.map((item) => item['NOMBRE'] as String).toList();
           List<String> coordenadas =
               data.map((item) => item['COORDENADAS'] as String).toList();
-
-          //List<int> valores = data.map((item) => item['ID'] as int).toList();
+          //hacer un to list manual con matriz
+          List<int> valores = data.map((item) => item['ID'] as int).toList();
 
           int cantidad = nombres.length;
           return Column(
@@ -155,7 +157,6 @@ Widget Lista() {
 
 
 void _irAlDetalle(){
-
   Navigator.of(ContextP!).push(MaterialPageRoute(
       builder: (_) => backgroundD()
   ));
